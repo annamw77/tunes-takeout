@@ -1,2 +1,1 @@
-class Food < ActiveRecord::Base
-end
+require 'httparty'

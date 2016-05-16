@@ -1,2 +1,1 @@
-class Music < ActiveRecord::Base
-end
+require 'httparty'
