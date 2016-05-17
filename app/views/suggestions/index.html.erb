@@ -1,1 +1,16 @@
-<h1> I'm alive </h1>
+<h1> Home Page </h1>
+
+<h2> Search for a New Suggestion </h2>
+  <%= form_tag '/', :method => "get" do %>
+    <%= text_field_tag :search_term %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+
+Params:
+<%= params %>
+
+Suggestion:
+<%= @suggestion %>
+
+<h2> Top 20 Suggestions </h2>
+<p>top 20 favorited suggestions go here.</p>
