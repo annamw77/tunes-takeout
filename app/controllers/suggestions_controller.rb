@@ -1,4 +1,6 @@
-class suggestionsController < ActionController::Base
+require 'TunesTakeoutWrapper'
+
+class SuggestionsController < ActionController::Base
 
   def index
   end
@@ -11,5 +13,5 @@ class suggestionsController < ActionController::Base
 
   def unfavorite
   end
-  
+
 end
