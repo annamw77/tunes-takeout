@@ -2,7 +2,6 @@ require 'httparty'
 require 'rspotify'
 
 class SpotifyItem
-  BASE_URL = "https://api.spotify.com"
   attr_reader :item_id, :type, :name, :url, :image_url
 
   def initialize(data)
