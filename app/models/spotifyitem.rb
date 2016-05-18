@@ -19,15 +19,9 @@ class SpotifyItem
       data = RSpotify::Album.find('music_id')
     elsif music_type == "artist"
       data = RSpotify::Artist.find('music_id')
-    elsif music_type == "playlist"
-      data = RSpotify::Playlist.find('useridgoeshereBROKEN', 'music_id')
     end
 
     self.new(data)
   end
-
-
-#  => "track"
-#  => "0BjkSCLEHlcsogSeDim01W"
 
 end
