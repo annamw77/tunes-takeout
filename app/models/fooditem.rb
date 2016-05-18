@@ -1,28 +1,27 @@
 require 'yelp'
 
-# client = Yelp::Client.new({ consumer_key: ENV["YELP_CONSUMER_KEY"],
-#                             consumer_secret: ENV["YELP_CONSUMER_SECRET"],
-#                             token: ENV["YELP_TOKEN"],
-#                             token_secret: ENV["YELP_TOKEN_SECRET"]
-#                           })
-#
-# data = client.search('Seattle', { term: 'pike-place-chowder-seattle' })
-# data.businesses[0].name = "Pike Place Chowder"
+class FoodItem
 
-#
-# class FoodItem
-#   attr_reader :all, :the, :things
-#
-#   def initialize(data)
-#     @item_id = data.id
-#     @type = data.type
-#     @name = data.name
-#     @url =
-#   end
-#
-#   def self.find(food_id)
-#
-#     self.new(data)
-#   end
-#
-# end
+  CLIENT = Yelp::Client.new({ consumer_key: ENV["YELP_CONSUMER_KEY"],
+                              consumer_secret: ENV["YELP_CONSUMER_SECRET"],
+                              token: ENV["YELP_TOKEN"],
+                              token_secret: ENV["YELP_TOKEN_SECRET"]
+                            })
+
+  attr_reader :business_id, :name, :url, :image_url, :phone, :rating
+
+  def initialize(data)
+    @business_id = data.business.id
+    @name = data.business.name
+    @url = data.business.url
+    @image_url = data.business.image_url
+    @phone = data.business.phone
+    @rating = data.business.rating
+  end
+
+  def self.find(food_id)
+    data = CLIENT.business(food_id)
+    self.new(data)
+  end
+
+end

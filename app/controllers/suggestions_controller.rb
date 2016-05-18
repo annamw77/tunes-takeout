@@ -1,5 +1,6 @@
 require 'TunesTakeoutWrapper'
-require 'spotifyitem.rb'
+require 'Spotifyitem'
+require 'Fooditem'
 
 class SuggestionsController < ActionController::Base
 
@@ -8,6 +9,7 @@ class SuggestionsController < ActionController::Base
       search_term = params["search_term"]
       @pairing = TunesTakeoutWrapper.find(search_term)
       @music_suggestion = SpotifyItem.find(@pairing.music_type,@pairing.music_id)
+      @food_suggestion = FoodItem.find(@pairing.food_id)
     end
   end
 
