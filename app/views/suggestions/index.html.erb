@@ -8,9 +8,19 @@
 
 Params:
 <%= params %>
+<br>
 
-Suggestion:
-<%= @suggestion %>
+<% if @pairing.present? %>
+  Pairing:
+  <%= @pairing %>
+  <br>
+  Food Suggestion:
+  <%= @food_suggestion %>
+  <br>
+  Music Suggestion:
+  <%= @music_suggestion.name %>
+  <br>
+<% end %>
 
 <h2> Top 20 Suggestions </h2>
 <p>top 20 favorited suggestions go here.</p>
