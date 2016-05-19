@@ -1,19 +1,39 @@
 require 'httparty'
 
 class TunesTakeoutWrapper
-  BASE_URL = "https://tunes-takeout-api.herokuapp.com/"
   attr_reader :id, :food_id, :music_id, :music_type
 
+  BASE_URL = "https://tunes-takeout-api.herokuapp.com/"
+
   def initialize(data)
-    @id = data["suggestions"][0]["id"]
-    @food_id = data["suggestions"][0]["food_id"]
-    @music_id = data["suggestions"][0]["music_id"]
-    @music_type = data["suggestions"][0]["music_type"]
+    @id = data["suggestion"]["id"]
+    @food_id = data["suggestion"]["food_id"]
+    @music_id = data["suggestion"]["music_id"]
+    @music_type = data["suggestion"]["music_type"]
   end
 
   def self.find(item)
     data = HTTParty.get(BASE_URL + "/v1/suggestions/search?query=#{item}&limit=1/").parsed_response
+    data["suggestion"] = data.delete("suggestions")
+    data["suggestion"] = data["suggestion"][0]
     self.new(data)
+  end
+
+  def self.top
+    data = HTTParty.get(BASE_URL + "/v1/suggestions/top").parsed_response
+    #returns a hash
+    #look through array of ids and turn them into an array of Wrapper instances
+    suggestion_pairings = []
+    data["suggestions"].each do |suggestion|
+      suggestion_pairings << HTTParty.get(BASE_URL + "/v1/suggestions/#{suggestion}").parsed_response
+    end
+
+    suggestion_instances = []
+    suggestion_pairings.each do |pairing|
+      suggestion_instances << self.new(pairing)
+    end
+
+    return suggestion_instances
   end
 
 end

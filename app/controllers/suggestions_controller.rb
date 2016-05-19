@@ -11,6 +11,8 @@ class SuggestionsController < ApplicationController
       @music_suggestion = SpotifyItem.find(@pairing.music_type,@pairing.music_id)
       @food_suggestion = FoodItem.find(@pairing.food_id)
     end
+
+    @top20 = TunesTakeoutWrapper.top
   end
 
   def favorites

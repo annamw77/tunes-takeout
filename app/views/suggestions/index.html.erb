@@ -13,4 +13,8 @@ Params:
 <% end %>
 
 <h2> Top 20 Suggestions </h2>
-<p>top 20 favorited suggestions go here.</p>
+<%= @top20 %>
+
+<% @top20.each do |suggestion| %>
+  <%= render "suggestion", :music_suggestion => SpotifyItem.find(suggestion.music_type,suggestion.music_id), :food_suggestion => FoodItem.find(suggestion.food_id) %>
+<% end %>
