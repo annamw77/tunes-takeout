@@ -18,10 +18,8 @@ class SpotifyItem
       end
 
       if (data.type == "album" || data.type == "artist") && data.images.any?
-        raise
         data.images[0]["url"]
       else
-        raise
         PLACEHOLDER_IMG_URL
       end
   end
