@@ -2,7 +2,7 @@ require 'TunesTakeoutWrapper'
 require 'Spotifyitem'
 require 'Fooditem'
 
-class SuggestionsController < ActionController::Base
+class SuggestionsController < ApplicationController
 
   def index
     if params["search_term"].present?

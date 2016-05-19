@@ -1,0 +1,14 @@
+<div id = "suggestion-wrapper">
+  <div id = "food-suggestion">
+    You might enjoy this restaurant: <%= link_to @food_suggestion.name, @food_suggestion.url %>
+    <br>
+    <%= image_tag @food_suggestion.image_url %>
+  </div>
+
+  <div id = "music-suggestion">
+    You might enjoy this <%= @music_suggestion.type %>:
+    <%= link_to @music_suggestion.name, @music_suggestion.url %>
+    <br>
+    <%= image_tag @music_suggestion.image_url, height: '100', width: '100' %>
+  </div>
+</div>

@@ -11,15 +11,7 @@ Params:
 <br>
 
 <% if @pairing.present? %>
-  Pairing:
-  <%= @pairing %>
-  <br>
-  Food Suggestion:
-  <%= @food_suggestion.name %>
-  <br>
-  Music Suggestion:
-  <%= @music_suggestion.name %>
-  <br>
+  <%= render "suggestion" %>
 <% end %>
 
 <h2> Top 20 Suggestions </h2>
