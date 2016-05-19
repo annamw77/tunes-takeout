@@ -1,15 +1,38 @@
+body {
+  background-color: #000066;
+  color: white;
+}
+
+body {
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Comfortaa', cursive;
+}
+
+a {
+  color: #EBD600;
+  text-decoration: underline;
+}
 /*
 suggestion partial
 */
 
 #suggestion-wrapper {
-  border: 1px solid black;
+  border: .25rem solid white;
+  width: 33%;
+  overflow: hidden;
 }
 
 #food-suggestion {
-
+  text-align: center;
+  width: 49%;
+  float: left;
 }
 
 #music-suggestion {
-
+  text-align: center;
+  width: 49%;
+  float: left;
 }
