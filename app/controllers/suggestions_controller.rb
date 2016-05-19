@@ -13,6 +13,8 @@ class SuggestionsController < ApplicationController
     end
 
     @top20 = TunesTakeoutWrapper.top
+
+    @user = User.find(session[:user_id])
   end
 
   def favorites
