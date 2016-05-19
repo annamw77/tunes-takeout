@@ -1,4 +1,4 @@
-<h2> Search for a New Suggestion </h2>
+<h2> Search for Inspiration </h2>
   <%= form_tag '/', :method => "get" do %>
     <%= text_field_tag :search_term %>
     <%= submit_tag 'Search' %>
@@ -8,12 +8,12 @@ Params:
 <%= params %>
 <br>
 
-<% if @pairing.present? %>
-  <%= render "suggestion" %>
+<% if params["search_term"].present? %>
+<h2> Your New Suggestion </h2>
+  <%= render "suggestion", :music_suggestion => @music_search, :food_suggestion => @food_search %>
 <% end %>
 
 <h2> Top 20 Suggestions </h2>
-
 <% @top20.each do |suggestion| %>
   <%= render "suggestion", :music_suggestion => SpotifyItem.find(suggestion.music_type,suggestion.music_id), :food_suggestion => FoodItem.find(suggestion.food_id) %>
 <% end %>
