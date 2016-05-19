@@ -14,11 +14,11 @@ class SpotifyItem
 
   def self.find(music_type,music_id)
     if music_type == "track"
-      data = RSpotify::Track.find('music_id')
+      data = RSpotify::Track.find(music_id)
     elsif music_type == "album"
-      data = RSpotify::Album.find('music_id')
+      data = RSpotify::Album.find(music_id)
     elsif music_type == "artist"
-      data = RSpotify::Artist.find('music_id')
+      data = RSpotify::Artist.find(music_id)
     end
 
     self.new(data)
