@@ -32,8 +32,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rspotify'
 gem 'yelp', require: 'yelp'
 gem 'httparty'
-gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-spotify'
+gem 'omniauth'
+gem 'omniauth-oauth2', '~> 1.3.1'
+
 
 
 group :development, :test do
