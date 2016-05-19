@@ -3,22 +3,24 @@ require 'rspotify'
 class SpotifyItem
   attr_reader :item_id, :type, :name, :url, :image_url
 
+  PLACEHOLDER_IMG_URL = "http://clipartix.com/wp-content/uploads/2016/04/Music-notes-musical-notes-clip-art-free-music-note-clipart-image-1.jpeg"
+
   def initialize(data)
     @item_id = data.id
     @type = data.type
     @name = data.name
     @url = data.external_urls.values[0]
     @image_url =
-      if data.images.present? && data.type == "track"
+      if data.type == "track" && data.album.images.present?
         data.album.images[0]["url"]
+      else
+        PLACEHOLDER_IMG_URL
       end
 
-      if data.images.present? && (data.type == "album" || data.type == "artist")
+      if (data.type == "album" || data.type == "artist") && data.images.present?
         data.images[0]["url"]
-      end
-
-      if data.images.present? == false
-        "https://c1.staticflickr.com/1/186/382004453_f4b2772254.jpg"
+      else
+        PLACEHOLDER_IMG_URL
       end
   end
 
