@@ -14,6 +14,7 @@
 
 <h2> Top 20 Favorites </h2>
 <%= session[:message] %>
+<% session[:message]=nil %>
 
 <% @top20.each do |suggestion| %>
   <%= render "suggestion", :music_suggestion => SpotifyItem.find(suggestion.music_type,suggestion.music_id), :food_suggestion => FoodItem.find(suggestion.food_id), :suggestion_id => suggestion.id %>
