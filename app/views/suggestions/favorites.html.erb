@@ -1,6 +1,5 @@
 <h2>Your Favorites</h2>
 
-<%= session["user_id"] %>
-favorites
-Displays _suggestion partials for each suggestion favorited by the logged-in user
-Each _suggestion partial also includes a button/link to unfavorite the suggestion
+<% @favorites.each do |suggestion| %>
+  <%= render "suggestion", :music_suggestion => SpotifyItem.find(suggestion.music_type,suggestion.music_id), :food_suggestion => FoodItem.find(suggestion.food_id), :suggestion_id => suggestion.id %>
+<% end %>

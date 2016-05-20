@@ -22,7 +22,9 @@ class SuggestionsController < ApplicationController
   end
 
   def favorites
-    @favorites = FAVORITESGOHERE
+    user = User.find(session[:user_id])
+    user_id = user.uid
+    @favorites = TunesTakeoutWrapper.get_favorites(user_id)
   end
 
   def favorite
