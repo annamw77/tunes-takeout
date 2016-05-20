@@ -18,6 +18,8 @@
 <% else %>
 Hello, <%= @user.name %>.
 <%= link_to "Log Out", logout_path, :method => :delete %>
+<%= link_to "My Favorites", favorites_path %>
+
 <% end %>
 
 </header>
