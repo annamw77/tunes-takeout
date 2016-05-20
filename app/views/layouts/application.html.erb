@@ -19,8 +19,12 @@
 Hello, <%= User.find(session["user_id"]).name %>.
 <%= link_to "Log Out", logout_path, :method => :delete %>
 <%= link_to "My Favorites", favorites_path %>
-
 <% end %>
+
+<br>
+
+<%= session[:message] %>
+<% session[:message]=nil %>
 
 </header>
 

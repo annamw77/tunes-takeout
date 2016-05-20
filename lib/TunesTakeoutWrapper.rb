@@ -46,6 +46,11 @@ class TunesTakeoutWrapper
     # pulls out numbers and returns them.
   end
 
+  def self.unfavorite(user_id,suggestion_id)
+    response = HTTParty.delete(BASE_URL + "/v1/users/#{user_id}/favorites", body: {"suggestion": suggestion_id}.to_json)
+    return response.code
+  end
+
   def self.get_favorites(user_id)
     data = HTTParty.get(BASE_URL + "/v1/users/#{user_id}/favorites").parsed_response
 

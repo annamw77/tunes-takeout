@@ -14,6 +14,6 @@
   </div>
 
   <%= link_to "Favorite", favorite_path(:suggestion_id => suggestion_id), :method => :post %>
-  <%= link_to "Unfavorite", unfavorite_path(:suggestion_id => suggestion_id), :method => :post %>
+  <%= link_to "Unfavorite", unfavorite_path(:suggestion_id => suggestion_id), :method => :delete %>
 
 </div>

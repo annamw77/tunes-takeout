@@ -46,6 +46,19 @@ class SuggestionsController < ApplicationController
   end
 
   def unfavorite
+    user = User.find(session[:user_id])
+    user_id = user.uid
+    suggestion_id = params["suggestion_id"]
+    favorite = TunesTakeoutWrapper.unfavorite(user_id,suggestion_id)
+
+    if favorite == 204
+      session[:message] = "That suggestion has been unfavorited!"
+    elsif favorite == 404
+      session[:message] = "Sorry - I couldn't find that suggestion."
+    else
+      session[:message] = "Sorry - I'm broken."
+    end
+    redirect_to root_path
   end
 
 end
