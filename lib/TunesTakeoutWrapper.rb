@@ -20,6 +20,9 @@ class TunesTakeoutWrapper
     self.new(data)
   end
 
+  data = HTTParty.get(BASE_URL + "/v1/suggestions/search?query=banana&limit=1/").parsed_response
+
+
   def self.top
     data = HTTParty.get(BASE_URL + "/v1/suggestions/top").parsed_response
     #returns a hash
@@ -38,10 +41,9 @@ class TunesTakeoutWrapper
   end
 
   def self.favorite(user_id,suggestion_id)
-    HTTParty.post(BASE_URL + "/v1/users/#{user_id}/favorites",
-  {
-    "suggestion": suggestion_id
-  })
+    response = HTTParty.post(BASE_URL + "/v1/users/#{user_id}/favorites", body: {"suggestion": suggestion_id}.to_json)
+    return response.code
+    # pulls out numbers and returns them.
   end
 
 end

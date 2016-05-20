@@ -7,12 +7,12 @@
 <% if params["search_term"].present? %>
   <br>
   <h2> Your New Suggestion </h2>
-  <%= render "suggestion", :music_suggestion => @music_search, :food_suggestion => @food_search %>
+  <%= render "suggestion", :music_suggestion => @music_search, :food_suggestion => @food_search, :suggestion_id => @suggestion_id %>
 <% end %>
 
 <br>
 
 <h2> Top 20 Favorites </h2>
 <% @top20.each do |suggestion| %>
-  <%= render "suggestion", :music_suggestion => SpotifyItem.find(suggestion.music_type,suggestion.music_id), :food_suggestion => FoodItem.find(suggestion.food_id) %>
+  <%= render "suggestion", :music_suggestion => SpotifyItem.find(suggestion.music_type,suggestion.music_id), :food_suggestion => FoodItem.find(suggestion.food_id), :suggestion_id => suggestion.id %>
 <% end %>

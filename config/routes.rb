@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
   get '/auth/spotify/callback' => 'sessions#create'
-
+  post 'favorite' => 'suggestions#favorite'
 end
