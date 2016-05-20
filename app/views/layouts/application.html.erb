@@ -13,13 +13,16 @@
 <header>
 <h1>Tunes & Takeout</h1>
 
-<% if session["user_id"].nil? %>
-<%= link_to "Sign Up/Log In With Spotify", '/auth/spotify' %>
-<% else %>
-Hello, <%= User.find(session["user_id"]).name %>.
-<%= link_to "Log Out", logout_path, :method => :delete %>
-<%= link_to "My Favorites", favorites_path %>
-<% end %>
+<nav>
+  <% if session["user_id"].nil? %>
+    <%= link_to "Sign Up/Log In With Spotify", '/auth/spotify' %>
+  <% else %>
+    Hello, <%= User.find(session["user_id"]).name %>.
+    <%= link_to "Log Out", logout_path, :method => :delete %>
+    <%= link_to "My Favorites", favorites_path %>
+    <%= link_to "Search & Top 20", root_path %>
+    <% end %>
+</nav>
 
 <br>
 
