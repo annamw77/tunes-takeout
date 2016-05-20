@@ -34,7 +34,7 @@ class SuggestionsController < ApplicationController
     favorite = TunesTakeoutWrapper.favorite(user_id,suggestion_id)
 
     if favorite == 201
-      session[:message] = "Your favorite has been saved!"
+      session[:message] = "That suggestion is now favorited!"
     elsif favorite == 409
       session[:message] = "That suggestion has been favorited already."
     elsif favorite == 404
@@ -52,13 +52,13 @@ class SuggestionsController < ApplicationController
     favorite = TunesTakeoutWrapper.unfavorite(user_id,suggestion_id)
 
     if favorite == 204
-      session[:message] = "That suggestion has been unfavorited!"
+      session[:message] = "That suggestion is now unfavorited."
     elsif favorite == 404
       session[:message] = "Sorry - I couldn't find that suggestion."
     else
       session[:message] = "Sorry - I'm broken."
     end
-    redirect_to root_path
+    redirect_to favorites_path
   end
 
 end
