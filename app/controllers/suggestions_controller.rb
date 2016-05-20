@@ -22,11 +22,12 @@ class SuggestionsController < ApplicationController
   end
 
   def favorites
+    @favorites = FAVORITESGOHERE
   end
 
   def favorite
     user = User.find(session[:user_id])
-    user_id = user.id
+    user_id = user.uid
     suggestion_id = params["suggestion_id"]
     favorite = TunesTakeoutWrapper.favorite(user_id,suggestion_id)
 
@@ -39,7 +40,7 @@ class SuggestionsController < ApplicationController
     else
       session[:message] = "Sorry - I'm broken."
     end
-    redirect_to root_path 
+    redirect_to root_path
   end
 
   def unfavorite

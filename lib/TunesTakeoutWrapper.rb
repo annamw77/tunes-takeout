@@ -46,4 +46,19 @@ class TunesTakeoutWrapper
     # pulls out numbers and returns them.
   end
 
+  def self.get_favorites(user_id)
+    data = HTTParty.get(BASE_URL + "/v1/users/#{user_id}/favorites").parsed_response
+
+    suggestion_pairings = []
+    data["suggestions"].each do |suggestion|
+      suggestion_pairings << HTTParty.get(BASE_URL + "/v1/suggestions/#{suggestion}").parsed_response
+    end
+
+    suggestion_instances = []
+    suggestion_pairings.each do |pairing|
+      suggestion_instances << self.new(pairing)
+    end
+
+    return suggestion_instances
+  end
 end
