@@ -1,4 +1,5 @@
 require 'httparty'
+require 'json'
 
 class TunesTakeoutWrapper
   attr_reader :id, :food_id, :music_id, :music_type
@@ -34,6 +35,13 @@ class TunesTakeoutWrapper
     end
 
     return suggestion_instances
+  end
+
+  def self.favorite(user_id,suggestion_id)
+    HTTParty.post(BASE_URL + "/v1/users/#{user_id}/favorites",
+  {
+    "suggestion": suggestion_id
+  })
   end
 
 end
