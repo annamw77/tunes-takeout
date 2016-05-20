@@ -14,10 +14,10 @@
 <h1>Tunes & Takeout</h1>
 
 <% if @user.nil? %>
-<%= link_to "Log In", login_path %>
+<%= link_to "Sign Up/Log In With Spotify", '/auth/spotify' %>
 <% else %>
 Hello, <%= @user.name %>.
-<%= link_to "Log Out", logout_path, :method => :delete %> 
+<%= link_to "Log Out", logout_path, :method => :delete %>
 <% end %>
 
 </header>

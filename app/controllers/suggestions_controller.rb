@@ -33,13 +33,13 @@ class SuggestionsController < ApplicationController
     if favorite == 201
       session[:message] = "Your favorite has been saved!"
     elsif favorite == 409
-      session[:message] = "That suggestion has been favorited already!"
+      session[:message] = "That suggestion has been favorited already."
     elsif favorite == 404
-      session[:message] = "Sorry - I couldn't find that suggestion"
+      session[:message] = "Sorry - I couldn't find that suggestion."
     else
-      session[:message] = "Sorry - I'm broken"
+      session[:message] = "Sorry - I'm broken."
     end
-    redirect_to root_path #WHERE TF SHOULD I GO TO HOLD ONTO MSG?
+    redirect_to root_path 
   end
 
   def unfavorite
