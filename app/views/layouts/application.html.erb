@@ -15,6 +15,9 @@
 
 <nav>
   <% if session["user_id"].nil? %>
+    <%= image_tag("spotify_logo.jpg", height: '100', width: '100') %>
+    Hello, Guest!
+    <br>
     <%= link_to "Sign Up/Log In With Spotify", '/auth/spotify' %>
   <% else %>
     <%= link_to image_tag(User.find(session["user_id"]).img_url, height: '100', width: '100'), "https://open.spotify.com/user/#{User.find(session["user_id"]).uid}" %>
