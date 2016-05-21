@@ -17,6 +17,11 @@ class TunesTakeoutWrapper
     data = HTTParty.get(BASE_URL + "/v1/suggestions/search?query=#{item}&limit=1/").parsed_response
     data["suggestion"] = data.delete("suggestions")
     data["suggestion"] = data["suggestion"][0]
+
+    if data["suggestion"].nil?
+      return @message = "Sorry, we couldn't find a good suggestion."
+    end
+
     self.new(data)
   end
 

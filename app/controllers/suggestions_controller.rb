@@ -8,11 +8,14 @@ class SuggestionsController < ApplicationController
     if params["search_term"].present?
       search_term = params["search_term"]
       pairing = TunesTakeoutWrapper.find(search_term)
-      @suggestion_id = pairing.id
-      @music_search = SpotifyItem.find(pairing.music_type,pairing.music_id)
-      @food_search = FoodItem.find(pairing.food_id)
+        if pairing.class == String
+          session[:message] = pairing
+        else
+          @suggestion_id = pairing.id
+          @music_search = SpotifyItem.find(pairing.music_type,pairing.music_id)
+          @food_search = FoodItem.find(pairing.food_id)
+        end
     end
-
     @top20 = TunesTakeoutWrapper.top
 
     if session[:user_id].present?

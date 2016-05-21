@@ -6,7 +6,7 @@
     <% end %>
 <% end %>
 
-<% if params["search_term"].present? %>
+<% if @suggestion_id.present? %>
   <br>
   <h2> Your New Suggestion </h2>
   <%= render "suggestion", :music_suggestion => @music_search, :food_suggestion => @food_search, :suggestion_id => @suggestion_id %>
