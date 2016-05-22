@@ -44,10 +44,13 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :test do
   gem 'minitest-vcr'
   gem 'minitest-rails'
-  gem 'simplecov'
-
+  gem 'simplecov', require: false
+  gem 'minitest-reporters'
 end
 
 group :development do
