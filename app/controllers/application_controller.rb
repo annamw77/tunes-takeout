@@ -1,5 +1,16 @@
+require 'TunesTakeoutWrapper'
+
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+   before_filter :find_favorites
+   before_action :find_favorites
+
+  def find_favorites
+    if session[:user_id].present?
+      @user = User.find(session[:user_id])
+      session[:favorites] = TunesTakeoutWrapper.check_for_favorites(@user.uid)
+    end
+  end
+
 end
