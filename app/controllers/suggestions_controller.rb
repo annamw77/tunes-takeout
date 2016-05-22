@@ -25,7 +25,6 @@ class SuggestionsController < ApplicationController
   end
 
   def favorites
-    raise
     user = User.find(session[:user_id])
     user_id = user.uid
     @favorites = TunesTakeoutWrapper.get_favorites(user_id)
