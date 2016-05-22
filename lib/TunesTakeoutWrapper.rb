@@ -71,4 +71,10 @@ class TunesTakeoutWrapper
 
     return suggestion_instances
   end
+
+  def self.check_for_favorites(user_id)
+    data = HTTParty.get(BASE_URL + "/v1/users/#{user_id}/favorites").parsed_response
+    data["suggestions"]
+  end
+
 end
