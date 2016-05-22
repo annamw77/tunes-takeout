@@ -11,16 +11,14 @@ class SpotifyItem
     @name = data.name
     @url = data.external_urls.values[0]
     @image_url =
-      if data.type == "track" && data.album.images.present?
+      if data.type == "track"
         data.album.images[0]["url"]
-      else
-        PLACEHOLDER_IMG_URL
-      end
-
-      if (data.type == "album" || data.type == "artist") && data.images.any?
-        data.images[0]["url"]
-      else
-        PLACEHOLDER_IMG_URL
+      elsif data.type == "album" || data.type == "artist"
+        if data.images.empty?
+          PLACEHOLDER_IMG_URL
+        else
+          data.images[0]["url"]
+        end
       end
   end
 
