@@ -45,7 +45,8 @@ class SuggestionsController < ApplicationController
     else
       session[:message] = "Sorry - I'm broken."
     end
-    redirect_to root_path
+
+    redirect_to :back
   end
 
   def unfavorite
@@ -61,7 +62,8 @@ class SuggestionsController < ApplicationController
     else
       session[:message] = "Sorry - I'm broken."
     end
-    redirect_to favorites_path
+
+    redirect_to :back
   end
 
 end

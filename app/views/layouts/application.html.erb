@@ -12,32 +12,41 @@
 <body>
 
 <header>
+
 <h1>Tunes & Takeout</h1>
 
-<nav>
+<div id = "greeting">
   <% if session["user_id"].nil? %>
     <%= image_tag("spotify_logo.jpg", height: '100', width: '100') %>
-    Hello, Guest!
     <br>
-    <%= link_to "Sign Up/Log In With Spotify", '/auth/spotify' %>
+    Hello, Guest!
   <% else %>
     <%= link_to image_tag(User.find(session["user_id"]).img_url, height: '100', width: '100'), "https://open.spotify.com/user/#{User.find(session["user_id"]).uid}" %>
-    Hello, <%= link_to "#{User.find(session["user_id"]).name}", "https://open.spotify.com/user/#{User.find(session["user_id"]).uid}" %>!
     <br>
-    <%= link_to "Log Out", logout_path, :method => :delete %>
-    <%= link_to "My Favorites", favorites_path %>
-    <%= link_to "Search & Top 20", root_path %>
-    <% end %>
-</nav>
+    Hello, <%= link_to "#{User.find(session["user_id"]).name}", "https://open.spotify.com/user/#{User.find(session["user_id"]).uid}" %>!
+  <% end %>
+</div>
 
-<br>
+<div id = "navlinks">
+  <% if session["user_id"].nil? %>
+    <%= link_to "Log In With Spotify", '/auth/spotify', id: "navlink" %>
+  <% else %>
+    <%= link_to "Search & Top 20", root_path, id: "navlink" %>
+    <%= link_to "My Favorites", favorites_path, id: "navlink" %>
+    <%= link_to "Log Out", logout_path, :method => :delete, id: "navlink" %>
+  <% end %>
+</div>
 
-<%= session[:message] %>
-<% session[:message]=nil %>
+<div id = "message">
+  <%= session[:message] %>
+  <% session[:message]=nil %>
+</div>
 
 </header>
 
+<article>
 <%= yield %>
+</article>
 
 </body>
 </html>
