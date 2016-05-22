@@ -21,8 +21,9 @@ suggestion partial
 
 #suggestion-wrapper {
   border: .25rem solid white;
-  width: 33%;
+  width: 50%;
   overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
 #food-suggestion {
@@ -35,4 +36,15 @@ suggestion partial
   text-align: center;
   width: 49%;
   float: left;
+}
+
+#favorite {
+  text-align: center;
+  width: 100%;
+  float: left;
+}
+
+img.suggestion {
+  padding-top: 1rem;
+  padding-bottom: .5rem;
 }

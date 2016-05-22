@@ -3,14 +3,14 @@
     This Food: <br>
     <%= link_to food_suggestion.name, food_suggestion.url %>
     <br>
-    <%= image_tag food_suggestion.image_url %>
+    <%= image_tag food_suggestion.image_url, :class => "suggestion" %>
   </div>
 
   <div id = "music-suggestion">
     This <%= music_suggestion.type %>: <br>
     <%= link_to music_suggestion.name, music_suggestion.url %>
     <br>
-    <%= image_tag music_suggestion.image_url, height: '100', width: '100' %>
+    <%= image_tag music_suggestion.image_url, height: '100', width: '100', :class => "suggestion" %>
   </div>
 
   <div id = "favorite">
