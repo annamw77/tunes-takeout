@@ -35,7 +35,7 @@ Header Formatting
 
 #navlink {
   padding: 6rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /*
@@ -50,6 +50,7 @@ suggestion partial
 */
 #suggestion-wrapper {
   border: .25rem solid white;
+  background-color: #000045;
   width: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;
