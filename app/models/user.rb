@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
   validates :name, :uid, :provider, presence: true
+  validate :provider_must_be_spotify
 
   def self.find_or_create_from_omniauth(auth_hash)
-    # Find or create a user
     user = self.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"], name: auth_hash["info"]["name"])
     if !user.nil?
       return user
     else
-      # no user found, do something here
       user = User.new
       user.uid = auth_hash["uid"]
       user.provider = auth_hash["provider"]
@@ -19,6 +18,14 @@ class User < ActiveRecord::Base
       else
         return nil
       end
+    end
+  end
+
+  private
+
+  def provider_must_be_spotify
+    if provider != "spotify"
+       errors.add(:provider, "must be Spotify")
     end
   end
 
