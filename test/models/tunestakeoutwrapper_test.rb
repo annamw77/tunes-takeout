@@ -1,8 +1,9 @@
 require 'test_helper'
+require 'TunesTakeoutWrapper'
 
 class TunesTakeoutWrapperTest < ActiveSupport::TestCase
 
-  describe TunesTakeoutWrapper do
+  describe TunesTakeoutWrapper.new do
     it "uses the correct API" do
       assert_equal "https://tunes-takeout-api.herokuapp.com/", TunesTakeoutWrapper::BASE_URL
     end
@@ -12,8 +13,10 @@ class TunesTakeoutWrapperTest < ActiveSupport::TestCase
         @banana_suggestion = TunesTakeoutWrapper.find("banana")
       end
 
-      it "knows its id", :vcr do
-        assert_equal "V0HIl1ElJwADzFsI", @banana_suggestion.id
+      VCR.use_cassette('knows_its_id') do
+        it "knows its id", :vcr do
+            assert_equal "V0HIl1ElJwADzFsI", @banana_suggestion.id
+        end
       end
     end
 
