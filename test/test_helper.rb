@@ -20,12 +20,11 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 MinitestVcr::Spec.configure!
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-  
+
   def setup
-   	OmniAuth.config.test_mode = true
-   	OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({:provider => 'spotify', :uid => 'musiclover', info: { name: "music lover", id: "12345"}})
+   OmniAuth.config.test_mode = true
+   OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({:provider => 'spotify', :uid => 'jijokii', info: { name: "Anna Wilson"}})
   end
-  # Add more helper methods to be used by all tests here...
+
 end
