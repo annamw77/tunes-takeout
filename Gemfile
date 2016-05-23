@@ -47,8 +47,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'minitest-vcr'
   gem 'minitest-reporters'
+  gem "minispec-metadata"
   gem 'webmock'
   gem 'simplecov', require: false
+  gem 'vcr'
 end
 
 
