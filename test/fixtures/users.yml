@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  provider: MyString
-  uid: MyString
-  name: MyString
-
-two:
-  provider: MyString
-  uid: MyString
-  name: MyString
+known_user:
+  uid: "known_user"
+  name: "anna marie"
+  provider: "spotify"
+  image_url: "http//www.images.com/image.jpg"
